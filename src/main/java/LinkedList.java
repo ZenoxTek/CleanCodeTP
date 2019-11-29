@@ -24,13 +24,11 @@ public class LinkedList<T> {
             return;
         }
         Node<T> temp = head.next;
-        int index = 0;
         while (temp.next != null) {
             temp = temp.next;
-            index++;
         }
-        newNode.setFinalNode(index + 1);
-        temp.setNode(newNode, index);
+        newNode.setFinalNode();
+        temp.setNode(newNode);
         increaseNumberOfElements();
     }
 
@@ -48,42 +46,30 @@ public class LinkedList<T> {
             addNodeOnEmptyList(newNode);
             return;
         }
-        newNode.setNode(head.next, 0);
-        head.setNode(newNode, -1);
+        newNode.setNode(head.next);
+        head.setNode(newNode);
         increaseNumberOfElements();
     }
 
     private void addNodeOnEmptyList(Node<T> node) {
-        node.setFinalNode(0);
-        head.setNode(node, -1);
+        node.setFinalNode();
+        head.setNode(node);
         increaseNumberOfElements();
     }
 
-    public boolean addAtFirstIndex(T element, int index) {
-        if (isListEmpty()) {
-            if (index == 0)
-            {
-                addNodeAtStartOfList(element);
-                return true;
-            }
-            return false;
-        }
-        return false;
-    }
-
     public boolean addNodeAtIndex(T element, int index) {
-        if (addAtFirstIndex(element, index)) {
+        if (index == 0) {
+            addNodeAtStartOfList(element);
             return true;
         }
         if (!isIndexInRange(index)) {
-            System.out.println("Danger");
             return false;
         }
         Node<T> nodeAtIndex = getNodeAtIndex(index);
         Node<T> nodeBeforeIndex = getNodeAtIndex(index - 1);
         Node<T> newNode = new Node<T>(element);
-        newNode.setNode(nodeAtIndex, index);
-        nodeBeforeIndex.setNode(newNode, index - 1);
+        newNode.setNode(nodeAtIndex);
+        nodeBeforeIndex.setNode(newNode);
         increaseNumberOfElements();
         return true;
     }
@@ -93,13 +79,9 @@ public class LinkedList<T> {
             return false;
         if (!isIndexInRange(index))
             return false;
-        if (index == 1) {
-            head.removeNextConnexion();
-            decreaseNumberOfElements();
-            return true;
-        }
         Node<T> nodeBeforeDeletedOne = getNodeAtIndex(index - 1);
-        nodeBeforeDeletedOne.removeNextConnexion();
+        if (nodeBeforeDeletedOne.next != null)
+            nodeBeforeDeletedOne.setNode(nodeBeforeDeletedOne.next.next);
         decreaseNumberOfElements();
         return true;
     }
@@ -116,6 +98,8 @@ public class LinkedList<T> {
     }
 
     public Node<T> getNodeAtIndex(int index) {
+        if (index == -1)
+            return head;
         Node<T> temp = head.next;
         for (int i = 0; i < index; i++) {
             if (temp == null) {
@@ -127,12 +111,15 @@ public class LinkedList<T> {
     }
 
     public int getIndexFromNode(T element) {
+        if (element == null)
+            return -1;
         Node<T> temp = head.next;
         int i = 0;
         while (temp != null) {
-            if (temp.getElement() == element)
+            if (temp.getElement().equals(element))
                 return i;
             temp = temp.next;
+            i++;
         }
         return -1;
     }
@@ -159,6 +146,8 @@ public class LinkedList<T> {
     }
 
     private boolean isIndexInRange(int index) {
+        if (index == -1)
+            return true;
         Node<T> temp = head.next;
         for (int i = 0; i <= index; i++) {
             if (temp == null)

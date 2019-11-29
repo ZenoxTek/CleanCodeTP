@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="LinkedListTest" tests="10" skipped="0" failures="0" errors="0" timestamp="2019-11-29T16:25:48" hostname="MSI" time="6.149">
+  <properties/>
+  <testcase name="getIndexFromNode" classname="LinkedListTest" time="0.006"/>
+  <testcase name="getNodeAtIndex" classname="LinkedListTest" time="0.0"/>
+  <testcase name="addNodeAtEndOfList" classname="LinkedListTest" time="0.0"/>
+  <testcase name="getSize" classname="LinkedListTest" time="0.0"/>
+  <testcase name="getFirstNode" classname="LinkedListTest" time="0.0"/>
+  <testcase name="deleteNodeAtIndex" classname="LinkedListTest" time="0.0"/>
+  <testcase name="getLastNode" classname="LinkedListTest" time="0.0"/>
+  <testcase name="addNodeAtIndex" classname="LinkedListTest" time="6.141"/>
+  <testcase name="deleteNode" classname="LinkedListTest" time="0.0"/>
+  <testcase name="addNodeAtStartOfList" classname="LinkedListTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

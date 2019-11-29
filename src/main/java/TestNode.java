@@ -14,4 +14,16 @@ public class TestNode {
                 ", testString='" + testString + '\'' +
                 '}';
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null)
+            return false;
+        if (obj instanceof TestNode)
+        {
+            TestNode temp = (TestNode)obj;
+            return temp.testInt == this.testInt && temp.testString.equals(this.testString);
+        }
+        return false;
+    }
 }
