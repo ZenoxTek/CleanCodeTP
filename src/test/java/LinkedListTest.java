@@ -8,7 +8,7 @@ public class LinkedListTest {
     public TestNode testNode;
 
     @Before
-    public void setUp() throws Exception {
+    public void setUp() {
         testNode = new TestNode(1, "Coucou je suis un test");
     }
 
@@ -93,7 +93,6 @@ public class LinkedListTest {
     @Test
     public void deleteNode() {
         LinkedList<TestNode> nodes = new LinkedList<TestNode>();
-        TestNode testNodeTwo = new TestNode(2, "Coucou je suis un test");
         nodes.addNodeAtStartOfList(testNode);
         nodes.addNodeAtStartOfList(testNode);
         assertTrue(nodes.deleteNode(testNode));

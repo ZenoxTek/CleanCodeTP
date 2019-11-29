@@ -71,10 +71,12 @@ public class LinkedList<T> {
     }
 
     public boolean deleteNodeAtIndex(int index) {
-        if (isListEmpty())
+        if (isListEmpty()) {
             return false;
-        if (!isIndexInRange(index))
+        }
+        if (!isIndexInRange(index)) {
             return false;
+        }
         Node<T> nodeBeforeDeletedOne = getNodeAtIndex(index - 1);
         if (nodeBeforeDeletedOne.next != null)
             nodeBeforeDeletedOne.setNode(nodeBeforeDeletedOne.next.next);
