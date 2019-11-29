@@ -1,7 +1,3 @@
-import javafx.beans.binding.ObjectExpression;
-
-import java.util.*;
-
 public class LinkedList<T> {
 
     private Node<T> head = null;
